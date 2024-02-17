@@ -6,7 +6,8 @@ Simple Chatbot CLI to test OpenAI API
 
 ### Installing
 
-* You will need rename `.env.base` and rename to `.env` also add your OpenAI API KEY, create an `.env` file and add this variable `OPENAI_API_KEY=YOUR_KEY` make sure you replace `YOUR_KEY` with your actual key 🤯🤯
+* You will need rename `.env.base` and rename to `.env` C
+* Create an `.env` file and add this variable `OPENAI_API_KEY=YOUR_KEY` make sure you replace `YOUR_KEY` with your actual [OpenAI Key](https://platform.openai.com/api-keys) 🤯🤯
 * After that, use:
 ```
 npm i
