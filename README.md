@@ -1,4 +1,4 @@
-# Chatbot CLI powered by 
+# Chatbot CLI powered by OPENAI
 
 Simple Chatbot CLI to test OpenAI API
 
