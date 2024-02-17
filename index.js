@@ -15,7 +15,10 @@ const main = async () => {
     }
 
     const chatHistory = [];
-    
+
+    // Define loadingInterval here, outside of the try/catch block
+    let loadingInterval;
+
     while (true) {
         const userInput = readLineSync.question(colors.bold.yellow(`${userName}: `));
 
@@ -36,12 +39,12 @@ const main = async () => {
         }
 
         try {
-            // Loading Indicator
-            const loadingInterval = setInterval(() => {
+            // Start the loading indicator
+            loadingInterval = setInterval(() => {
                 process.stdout.write(colors.bold.magenta('.'));
             }, 500);
 
-            const messages = chatHistory.map(([role, content]) => ({role, content})) // Constructor messages by iterating over the history
+            const messages = chatHistory.map(([role, content]) => ({role, content})) // Construct messages by iterating over the history
             messages.push({role: 'user', content: userInput}); // Later user input
             const chatCompletion = await openai.chat.completions.create({
                 model: 'gpt-3.5-turbo', // Make sure use the text model - https://platform.openai.com/docs/models
@@ -49,7 +52,7 @@ const main = async () => {
             });
             const botResponse = chatCompletion.choices[0].message.content;
 
-            // stop loading indicator when response is back...
+            // Stop the loading indicator when the response is back...
             clearInterval(loadingInterval);
             process.stdout.write('\r\x1b[K'); // to clean up "..."
 
@@ -66,7 +69,5 @@ const main = async () => {
         }
     }
 }
-
-
 
 main();
